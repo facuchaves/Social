@@ -6,6 +6,8 @@ import twitterServicios
 
 #twitterServicios.obtenerSeguidores(955133202,'Patro',True)
 
+#twitterServicios.actualizarDejarDeSeguir()
+
 #Comparar con https://web.crowdfireapp.com/#/163064210-tw/nonFollowers
 #twitterServicios.dejarDeSeguirConcurrente(False)
 
