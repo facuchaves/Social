@@ -5,6 +5,7 @@ Llama a los servicios de twitter para obtener lista de ids de seguidos y seguido
 import oauth2 as oauth
 import json
 import random
+import time
 
 idMio=163064210
 nameMio='FacuChavesOk'
@@ -44,6 +45,7 @@ def obtenerIdsGenericos(url,fileName,reLlamar=True):
 	if 	'next_cursor' in data:
 		next_cursor = data['next_cursor']
 		while reLlamar and next_cursor != 0:
+			time.sleep(1)
 			cursorParam='&cursor='+str(next_cursor)
 			content, idsGenericos , NAME = oauth_req( url + cursorParam , applicationId = 1 )
 			data2 = json.loads(idsGenericos)
