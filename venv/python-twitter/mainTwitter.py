@@ -20,10 +20,10 @@ import time
 #twitterServicios.obtenerSeguidores(726630055,'ecytUnsam')
 #twitterServicios.obtenerSeguidores(1879390710,'UnsamHumanidades')
 
-#twitterServicios.actualizarDejarDeSeguir()
+twitterServicios.actualizarDejarDeSeguir()
 
 #Comparar con https://web.crowdfireapp.com/#/163064210-tw/nonFollowers
-#twitterServicios.dejarDeSeguirConcurrente(False)
+twitterServicios.dejarDeSeguirConcurrente(False)
 
 #twitterServicios.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_TodoBachata')
 #twitterServicios.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_EstudioReinaReech')
@@ -39,3 +39,4 @@ import time
 #twitterServicios.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_UNSAM')
 #twitterServicios.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_ecytUnsam')
 #twitterServicios.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_UnsamHumanidades')
+twitterServicios.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_Patro')

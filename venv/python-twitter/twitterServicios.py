@@ -127,7 +127,7 @@ def chuparSeguidores():
 	global CONTADOR
 	global TOPE_DIARIO
 	while (CONTADOR < TOPE_DIARIO):
-		time.sleep(1)
+		time.sleep(2)
 		if CONTADOR > 0 and CONTADOR%10 == 0:
 			print('Se siguieron ' + str(CONTADOR) + ' usuarios.')
 		idSeguidorAChupar = obtenerSiguienteIdAChupar()
