@@ -35,6 +35,9 @@ def dejarDeSeguirConcurrente(flagActualizar):
 
 	threadList = []
 
+	global CONTADOR
+	CONTADOR=0
+
 	for x in xrange(0,1):
 		threadList.append(threading.Thread( target=dejarDeSeguir ))
 
@@ -107,6 +110,9 @@ def chuparSeguidoresConcurrente(fileName):
 	inicializarIdsAChupar(fileName)
 
 	threadList = []
+
+	global CONTADOR
+	CONTADOR=0
 
 	for x in xrange(0,1):
 		threadList.append(threading.Thread( target=chuparSeguidores ))
