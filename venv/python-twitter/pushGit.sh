@@ -1,5 +1,5 @@
-git add pushGit.sh
+git add .
 
-git commit -m "Prueba de push de pushGit.sh."
+git commit -m "Automatic Commit."
 
 git push
