@@ -14,7 +14,7 @@ listaDejarDeSeguir=[]
 listaAChupar=[]
 listaProcesados=[]
 CONTADOR=0
-TOPE_DIARIO=1#000
+TOPE_DIARIO=1000
 
 '''
 DEJAR DE SEGUIR SECCION

@@ -37,7 +37,7 @@ def generarReporteProcesadosProcesados(fileName,listaProcesados):
 #Piso el archivo original por un archivo solo con los pendientes, para que cuando se vuelve a procesar no vuelva a enviar solicitud a alguien que ya le envio anteriormente
 def	generarReportePendientes(fileName,listaPendientes):
 	print 'Generando Reporte de pendientes.'
-	print 'Se escribio en archivo ' + fileName + '_PROCESADOS'
+	print 'Se escribio en archivo ' + fileName
 	fileOriginal = open(fileName,'w+')
 	for idPendiente in listaPendientes:
 		fileOriginal.write(idPendiente)
