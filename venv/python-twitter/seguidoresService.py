@@ -6,18 +6,15 @@ import twitterApiClient
 import procesamientoArchivos
 import reporte
 import threading
-import json
 import time
 import datetime
-
-idMio=163064210
-nameMio='FacuChavesOk'
+import seguidoresModel
 
 listaDejarDeSeguir=[]
 listaAChupar=[]
 listaProcesados=[]
 CONTADOR=0
-TOPE_DIARIO=1000
+TOPE_DIARIO=1#000
 
 '''
 DEJAR DE SEGUIR SECCION
@@ -63,23 +60,22 @@ def dejarDeSeguir():
 		if idDejarDeSeguir == None:
 			print('Se dejaron de seguir ' + str(CONTADOR) + ' usuarios.')
 			break
-		resp, content , NAME = twitterApiClient.dejarDeSeguir(idDejarDeSeguir )
-		tuplaRespuesta = (idDejarDeSeguir,resp,content , NAME )
+		resp, content , aplicationName = twitterApiClient.dejarDeSeguir(idDejarDeSeguir )
+		respuestaProcesado = seguidoresModel.RespuestaProcesado( datetime.datetime.now() , idDejarDeSeguir , resp , content , aplicationName )
 		lock = threading.Lock()
 		lock.acquire()
 		#TODO Agregar logica que si tiene error, reportarlo, pero dejarlo en el archivo de dejar de seguir asi no se pierde y lo vuelve a intentar de dejar de seguir mas adelante
-		listaProcesados.append(tuplaRespuesta)
+		listaProcesados.append(respuestaProcesado)
 		CONTADOR += 1
-		contentJson = json.loads( str( content ) )
-		if 	'errors' in contentJson:
-			if ( contentJson['errors'][0]['code'] == 161 ):#108: Usuario no encontrado.
+		if 	'errors' in content:
+			if ( content['errors'][0]['code'] == 161 ):#108: Usuario no encontrado.
 				print 'No se puede dejar de seguir mas limite alcanzado.'
 				lock.release()
 				print('Se dejaron de seguir ' + str(CONTADOR) + ' usuarios.')
 				break
 			
-			if ( contentJson['errors'][0]['code'] == 89 ):#108: Usuario no encontrado.
-				print 'No se puede dejar de seguir mas token expirado: ' + NAME
+			if ( content['errors'][0]['code'] == 89 ):#108: Usuario no encontrado.
+				print 'No se puede dejar de seguir mas token expirado: ' + aplicationName
 				lock.release()
 				print('Se dejaron de seguir ' + str(CONTADOR) + ' usuarios.')
 				break
@@ -140,22 +136,21 @@ def chuparSeguidores():
 		if idSeguidorAChupar == None:
 			print('Se siguieron ' + str(CONTADOR) + ' usuarios.')
 			break
-		resp, content , NAME = twitterApiClient.seguir(idSeguidorAChupar )
-		tuplaRespuesta = (idSeguidorAChupar,resp,content, NAME )
+		resp, content , aplicationName = twitterApiClient.seguir(idSeguidorAChupar )
+		respuestaProcesado = seguidoresModel.RespuestaProcesado( datetime.datetime.now() , idSeguidorAChupar , resp , content , aplicationName )
 		lock = threading.Lock()
 		lock.acquire()
 		#TODO Agregar logica que si tiene error, reportarlo, pero dejarlo en el archivo de seguir asi no se pierde y lo vuelve a intentar de seguir mas adelante
-		listaProcesados.append(tuplaRespuesta)
+		listaProcesados.append(respuestaProcesado)
 		CONTADOR += 1
-		contentJson = json.loads( str( content ) )
-		if 	'errors' in contentJson:
-			if ( contentJson['errors'][0]['code'] == 161 ):#108: Usuario no encontrado.
+		if 	'errors' in content:
+			if ( content['errors'][0]['code'] == 161 ):#108: Usuario no encontrado.
 				print 'No se puede seguir mas, limite alcanzado'
 				lock.release()
 				print('Se siguieron ' + str(CONTADOR) + ' usuarios.')
 				break
-			if ( contentJson['errors'][0]['code'] == 89 ):#108: Usuario no encontrado.
-				print 'No se puede dejar de seguir mas token expirado: ' + NAME
+			if ( content['errors'][0]['code'] == 89 ):#108: Usuario no encontrado.
+				print 'No se puede dejar de seguir mas token expirado: ' + aplicationName
 				lock.release()
 				print('Se siguieron ' + str(CONTADOR) + ' usuarios.')
 				break
@@ -177,34 +172,43 @@ def obtenerSiguienteIdAChupar():
 	return idSeguidorAChupar
 
 '''
-FUNCIONES AUXILIARES
+Manejo de datos
 '''
 
-def actulizarDatosMios():
-	print 'Actualizando datos mios.'
-	twitterApiClient.obtenerSeguidos(idMio,nameMio,True)
-	twitterApiClient.obtenerSeguidores(idMio,nameMio,True)
+miId=163064210
+miName='FacuChavesOk'
+
+#Actualiza el archivo de mis seguidos
+def actualizarMisSeguidos():
+	print 'Actualizando mis seguidos.'
+	resp, content , aplicationName = twitterApiClient.obtenerSeguidosByUserId(miId)
+	print 'Cantidad seguidos : ' + str( len(content['ids'] ) )
+	actualizarIdsEnArchivos( content['ids'] , 'Datos/Seguidos_Por_FacuChavesOk' )
+
+#Actualiza el archivo de mis seguidores
+def actualizarMisSeguidores():
+	print 'Actualizando mis seguidores.'
+	resp, content , aplicationName = twitterApiClient.obtenerSeguidoresByUserId(miId)
+	print 'Cantidad seguidores : ' + str( len(content['ids'] ) )
+	actualizarIdsEnArchivos( content['ids'] , 'Datos/Seguidores_De__FacuChavesOk' )
+
+#Actualiza archivo de ids.
+def actualizarIdsEnArchivos(ids,fileName):
+	f = open( fileName , 'w+')
+	for id in ids:
+		f.write(str(id)+'\n')
+	f.close()
 
 #Obtiene los seguidores del id pasado por parametro y genera un archivo con todos los ids.
 def obtenerSeguidores(id,name):
-	twitterApiClient.obtenerSeguidores(id,name)
+	twitterApiClient.obtenerSeguidoresByUserId(id)
 	procesamientoArchivos.disjuncion('Datos/Seguidos_Por_FacuChavesOk','Datos/Seguidores_De_'+str(name),'Datos/Ids_A_Seguir_De_'+str(name))
 
 #Comparar con https://web.crowdfireapp.com/#/163064210-tw/nonFollowers
 def actualizarDejarDeSeguir():
 	print 'Actualizando datos dejar de seguir.'
-	actulizarDatosMios()
+	actualizarMisSeguidos()
+	actualizarMisSeguidores()
 	procesamientoArchivos.disjuncion('Datos/Seguidores_De_FacuChavesOk','Datos/Seguidos_Por_FacuChavesOk','Datos/DejarDeSeguir')
 
-#Devuelve el id de una aplicacion para usar en las llamadas de chupar seguidores y de dejar de seguir
-def getApplicationId():
-	global APPLICATIONID
-	lock = threading.Lock()
-	lock.acquire()
-	applicationIdADevolver =  APPLICATIONID
-	APPLICATIONID += 1
-	lock.release()
-	print 'applicationId devuelto : ' + str(applicationIdADevolver)
-	return applicationIdADevolver
-
-print 'Compilando twitterServicios.py'
+print 'Compilando seguidoresService.py'
