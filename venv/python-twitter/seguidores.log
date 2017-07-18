@@ -289,3 +289,26 @@ Generando Reporte de procesados.
 Se escribio en archivo Datos/DejarDeSeguir_PROCESADOS
 Generando Reporte de pendientes.
 Se escribio en archivo Datos/DejarDeSeguir
+Dejando de seguir no-seguidores ...
+Actualizando datos dejar de seguir.
+Actualizando mis seguidos.
+Cantidad seguidos : 5506
+Actualizando mis seguidores.
+Cantidad seguidores : 6408
+246 no-seguidores para dejar de seguir.
+Se dejaron de seguir 10 usuarios.
+Se dejaron de seguir 20 usuarios.
+Se dejaron de seguir 30 usuarios.
+No se puede dejar de seguir mas token expirado: Seguidores 10.0
+Se dejaron de seguir 32 usuarios.
+Generando Reporte de procesados.
+Se escribio en archivo Datos/DejarDeSeguir_PROCESADOS
+Generando Reporte de pendientes.
+Se escribio en archivo Datos/DejarDeSeguir
+Siguiendo usuarios ...
+No se puede dejar de seguir mas token expirado: Seguidores 10.0
+Se siguieron 2 usuarios.
+Generando Reporte de procesados.
+Se escribio en archivo Datos/Ids_A_Seguir_De_Patro_PROCESADOS
+Generando Reporte de pendientes.
+Se escribio en archivo Datos/Ids_A_Seguir_De_Patro
