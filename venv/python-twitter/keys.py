@@ -94,7 +94,7 @@ listaApps.append(
 		'z8A2JmlGN0zGE7xFqCceDIECWJotMkzy7jNzjXMM0x4ZL' 
 	) 
 )
-
+'''
 listaApps.append( 
 	( 
 		'Seguidores 10.0' , 
@@ -104,7 +104,7 @@ listaApps.append(
 		'H79dNfirVFMjReh6GmqGbgydGVqJ6ZneFsQuqx7KoASxk' 
 	) 
 )
-
+'''
 def obtenerRandomKey():
 	index = random.randrange( len(listaApps)  )	
 	return listaApps[index]
