@@ -4,6 +4,23 @@ Main de seguidores
 
 import seguidoresService
 import time
+import sys
+
+class Tee(object):
+    def __init__(self, *files):
+        self.files = files
+    def write(self, obj):
+        for f in self.files:
+            f.write(obj)
+            f.flush() # If you want the output to be visible immediately
+    def flush(self) :
+        for f in self.files:
+            f.flush()
+
+f = open('seguidores.log', 'a')
+original = sys.stdout
+sys.stdout = Tee(sys.stdout, f)
+
 
 #seguidoresService.obtenerSeguidores(214357583,'TodoBachata')
 #seguidoresService.obtenerSeguidores(150548348,'EstudioReinaReech')
@@ -40,3 +57,5 @@ seguidoresService.dejarDeSeguirConcurrente(True)
 #seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_ecytUnsam')
 #seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_UnsamHumanidades')
 seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_Patro')
+
+f.close()

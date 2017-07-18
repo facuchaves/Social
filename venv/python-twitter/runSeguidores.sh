@@ -4,7 +4,7 @@ git pull
 
 source ../bin/activate
 
-echo python mainSeguidores.py | tee seguidores.log
+python mainSeguidores.py
 
 git add .
 

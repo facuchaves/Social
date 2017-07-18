@@ -1,1 +1,10 @@
 python mainSeguidores.py
+Dejando de seguir no-seguidores ...
+Actualizando datos dejar de seguir.
+Actualizando mis seguidos.
+Cantidad seguidos : 6171
+Actualizando mis seguidores.
+Cantidad seguidores : 6328
+912 no-seguidores para dejar de seguir.
+Se dejaron de seguir 10 usuarios.
+Respuesta con error : {"content-length": "3258", "x-tsa-request-body-time": "0", "x-xss-protection": "1; mode=block", "perf": "6", "x-content-type-options": "nosniff", "x-connection-hash": "b1c65726575e892d1474c14324217a42", "x-twitter-response-tags": "BouncerCompliant", "cache-control": "no-cache, no-store, must-revalidate, pre-check=0, post-check=0", "status": "200", "content-disposition": "attachment; filename=json.json", "set-cookie": "personalization_id="v1_UN43GMUSpXotVVSM/vLmTg=="; Expires=Thu, 18 Jul 2019 00:58:11 UTC; Path=/; Domain=.twitter.com, lang=es; Path=/, guest_id=v1%3A150033949089819498; Expires=Thu, 18 Jul 2019 00:58:11 UTC; Path=/; Domain=.twitter.com", "expires": "Tue, 31 Mar 1981 05:00:00 GMT", "x-access-level": "read-write", "last-modified": "Tue, 18 Jul 2017 00:58:11 GMT", "-content-encoding": "gzip", "pragma": "no-cache", "date": "Tue, 18 Jul 2017 00:58:11 GMT", "x-response-time": "289", "x-transaction": "00fa3ce300cde1ad", "strict-transport-security": "max-age=631138519", "server": "tsa_d", "x-transaction-id": "00fa3ce300cde1ad", "x-frame-options": "SAMEORIGIN", "content-type": "application/json;charset=utf-8"}
