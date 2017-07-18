@@ -56,6 +56,6 @@ seguidoresService.dejarDeSeguirConcurrente(True)
 #seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_UNSAM')
 #seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_ecytUnsam')
 #seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_UnsamHumanidades')
-seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_Patro')
+#seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_Patro')
 
 f.close()
