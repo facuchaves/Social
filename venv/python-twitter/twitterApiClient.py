@@ -22,9 +22,17 @@ def send(url, http_method="GET", post_body=""):
 	resp, content = client.request( url, method=http_method, body=post_body)
 
 	try:
-		return json.loads(str(resp).replace("'","\"").replace(": u",": ").strip('\n')), json.loads(content) , applicationName
-	except ValueError:
-		print 'Respuesta con error : ' + str(resp).replace("'","\"").replace(": u",": ").strip('\n')
+		respJson = json.loads( cleanJson( str(resp) ) )
+		contentJson = json.loads(content)
+		return respJson , contentJson , applicationName
+	except ValueError as e:
+		print 'Respuesta con error : ' + cleanJson( str(resp) )
+		print 'Content con error : ' + content
+		print e
+
+#Funcion auxiliar para sacar caracteres raros de la respuesta de twitter
+def cleanJson(jsonStr):
+	return jsonStr.replace("'","\"").replace(": u",": ").replace("personalization_id=\"","personalization_id=").replace("\";",";").strip('\n')
 
 #Envia un request y si tiene next cursor vuelve a llamar
 def sendWithNextCursor(url, http_method="GET", post_body=""):
