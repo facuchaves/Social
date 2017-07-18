@@ -20,9 +20,11 @@ def buildClient():
 def send(url, http_method="GET", post_body=""):
 	applicationName , client = buildClient()
 	resp, content = client.request( url, method=http_method, body=post_body)
-	#print 'resp : ' + str(resp).replace("'","\"").replace(": u",": ").strip('\n')
 
-	return json.loads(str(resp).replace("'","\"").replace(": u",": ").strip('\n')), json.loads(content) , applicationName
+	try:
+		return json.loads(str(resp).replace("'","\"").replace(": u",": ").strip('\n')), json.loads(content) , applicationName
+	except ValueError:
+		print 'Respuesta con error : ' + str(resp).replace("'","\"").replace(": u",": ").strip('\n')
 
 #Envia un request y si tiene next cursor vuelve a llamar
 def sendWithNextCursor(url, http_method="GET", post_body=""):

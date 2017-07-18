@@ -1,8 +1,10 @@
 #/bin/sh
 
+git pull
+
 source ../bin/activate
 
-python mainSeguidores.py 
+echo python mainSeguidores.py | tee seguidores.log
 
 git add .
 
