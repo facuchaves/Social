@@ -37,10 +37,10 @@ sys.stdout = Tee(sys.stdout, f)
 #seguidoresService.obtenerSeguidores(726630055,'ecytUnsam')
 #seguidoresService.obtenerSeguidores(1879390710,'UnsamHumanidades')
 
-#seguidoresService.actualizarDejarDeSeguir()
+seguidoresService.actualizarDejarDeSeguir()
 
 #Comparar con https://web.crowdfireapp.com/#/163064210-tw/nonFollowers
-seguidoresService.dejarDeSeguirConcurrente(True)
+#seguidoresService.dejarDeSeguirConcurrente(True)
 
 #seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_TodoBachata')
 #seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_EstudioReinaReech')
@@ -56,6 +56,6 @@ seguidoresService.dejarDeSeguirConcurrente(True)
 #seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_UNSAM')
 #seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_ecytUnsam')
 #seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_UnsamHumanidades')
-seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_Patro')
+#seguidoresService.chuparSeguidoresConcurrente('Datos/Ids_A_Seguir_De_Patro')
 
 f.close()
