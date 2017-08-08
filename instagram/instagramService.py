@@ -1,6 +1,6 @@
 import apiCurl
 import json
-import instagramData
+import instagramConf
 import os.path
 import procesamientoArchivos
 
@@ -10,7 +10,7 @@ Obtiene los seguidos y los pasa de json a ids planos
 def getMysFollowings():
 	print 'Obteniendo los que sigo'
 	apiCurl.searchMysFollowings()
-	followinsJsonToPlainId('Data/Followings_' + str(instagramData.myId))
+	followinsJsonToPlainId('Data/Followings_' + str(instagramConf.myId))
 
 '''
 Obtiene los seguidos y los pasa de json a ids planos
@@ -18,12 +18,17 @@ Obtiene los seguidos y los pasa de json a ids planos
 def getMysFollowers():
 	print 'Obteniendo seguidores'
 	apiCurl.searchMysFollowers()
-	followersJsonToPlainId('Data/Followers_' + str(instagramData.myId))
+	followersJsonToPlainId('Data/Followers_' + str(instagramConf.myId))
 
-
+'''
+Pasa de Json a texto plano con ids de los seguidores
+'''
 def followersJsonToPlainId(jsonFileName):
 	jsonToPlainId(jsonFileName , 'edge_followed_by')
 
+'''
+Pasa de Json a texto plano con ids de los seguidos
+'''
 def followinsJsonToPlainId(jsonFileName):
 	jsonToPlainId(jsonFileName , 'edge_follow')
 
@@ -52,7 +57,29 @@ def updateNonFollowerBack():
 	getMysFollowers()
 	getMysFollowings()
 	print 'Haciendo disjuncion de mis no seguidores'
-	procesamientoArchivos.disjuncion('Data/Followers_' + str(instagramData.myId),'Data/Followings_' + str(instagramData.myId),'Data/IdsToUnFollow' )
+	procesamientoArchivos.disjuncion('Data/Followers_' + str(instagramConf.myId),'Data/Followings_' + str(instagramConf.myId),'Data/IdsToUnFollow' )
+
+'''
+Obtiene las X primeras lineas y las devuelve.
+'''
+def getLinesAndRemoveFromFile(fileName):
+	lines = open(fileName).readlines()
+	open(fileName, 'w').writelines(lines[instagramConf.maxOperationsPerTime: len(lines) ])
+	return lines[0:instagramConf.maxOperationsPerTime]
+
+'''
+Obtiene todos los ids a seguir de un usuario
+'''
+def getIdsToFollowFromUser(user):
+	print 'Buscando Followings'
+	apiCurl.searchFollowings(user.idUsuario)
+
+def procesandoJsonToPlainText(user):
+	print 'Pasando de Json a PlainId'
+	followinsJsonToPlainId('Data/Followings_' + str(user.idUsuario) )
+	
+	print 'Haciendo disjuncion'
+	procesamientoArchivos.disjuncion('Data/Followers_' + str(instagramConf.myId),'Data/Followings_' + str(user.idUsuario),'Data/Followings_' + str(user.idUsuario) + "_" + str(user.nombre) + '_ToFollow' )
 
 '''
 Deja de seguir de a 35 a los que no me siguen
@@ -66,26 +93,11 @@ def unfollowNonFollowersBack(update=True):
 	for id in lines:
 		apiCurl.unfollow( id )
 
-def getLinesAndRemoveFromFile(fileName):
-	lines = open(fileName).readlines()
-	open(fileName, 'w').writelines(lines[instagramData.maxOperationsPerTime: len(lines) ])
-	return lines
-
-'''
-Obtiene todos los ids a seguir de un usuario
-'''
-def getIdsToFollowFromUserId(userId):
-	apiCurl.searchFollowings(userId)
-	jsonToPlainId('Data/Followings_' + str(userId))
-	procesamientoArchivos.disjuncion('Data/Followers_' + str(instagramData.myId),'Data/Followings_' + str(userId),'Followings_' + str(userId) + '_ToFollow' )
-
 '''
 Sigue de a 35 seguidores de una persona especificada por id
 '''
-def followFromUserId(userId):
-	print 'Siguiendo usuario de ' + str(userId)
-	with open('Data/Followings_' + str(userId) + '.json') as data_file:    
-	    data = json.load(data_file)
-	    #for node in data['data']['user']['edge_follow']['edges']:
-	    	#print node['node']['id']
-	    	#apiCurl.follow(id)
+def followFromUser(user):
+	print 'Siguiendo usuario de ' + str(user.idUsuario) + ":" + str(user.nombre)
+	lines = getLinesAndRemoveFromFile('Data/Followings_' + str(user.idUsuario) + "_" + str(user.nombre) + '_ToFollow')
+	for id in lines:
+		apiCurl.follow( id )

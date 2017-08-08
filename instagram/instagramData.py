@@ -1,3 +1,4 @@
-myId = 1457071243
+import usuario
 
-maxOperationsPerTime = 15
+userMaxi = usuario.Usuario('Maxi' , 506715842)
+userAgusNunez = usuario.Usuario('AgusNunez' , 315278478)

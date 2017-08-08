@@ -19,11 +19,13 @@ def searchFollowers(id):
 	time.sleep(secondsSleep)
 '''
 def follow(id):
-	print 'follow ' + str(id)
+	print "\n"
+	print 'Follow : ' + str(id)
 	Process=subprocess.Popen('./follow.sh %s ' % (str(id),), shell=True)
 	time.sleep(secondsSleep)
 
 def unfollow(id):
-	print 'unfollow ' + str(id)
+	print "\n"
+	print 'UnFollow : ' + str(id)
 	Process=subprocess.Popen('./unfollow.sh %s ' % (str(id),), shell=True)
 	time.sleep(secondsSleep)

@@ -1,4 +1,10 @@
 import instagramService
+import instagramData
 
-instagramService.unfollowNonFollowersBack(False)
+currentUser = instagramData.userAgusNunez
 
+#instagramService.updateNonFollowerBack()
+#instagramService.getIdsToFollowFromUser(currentUser)
+#instagramService.procesandoJsonToPlainText(currentUser)
+#instagramService.unfollowNonFollowersBack(False)
+instagramService.followFromUser(currentUser)

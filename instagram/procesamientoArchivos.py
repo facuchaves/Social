@@ -15,9 +15,9 @@ def disjuncion(fileName1,fileName2,fileNameOutput):
 
 	outputFile = open(fileNameOutput , "w+")
 	with open(fileName2, 'rU') as file2:
-	  for elemFile2 in file2:
-	     if elemFile2 not in listaFile1:
-	     	outputFile.write(str(elemFile2))
-	     	contador+=1
-	  outputFile.close()
+		for elemFile2 in file2:
+			if elemFile2 not in listaFile1:
+				outputFile.write(str(elemFile2))
+				contador+=1
+	outputFile.close()
 	#print str(contador) + ' elementos que estan en ' + str(fileName2) + ' pero no en  ' + str(fileName1)
