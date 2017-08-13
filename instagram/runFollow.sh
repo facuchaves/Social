@@ -2,4 +2,4 @@
 #$ -S /bin/bash
 #$ -N $2
 
-python mainInstagram.py
+python follow.py
