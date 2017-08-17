@@ -1,21 +1,13 @@
-import apiCurl
-import json
-import time
+import apiRequest
 
 def likesEveryone():	
-		
-	apiCurl.search()
+	jsonResponse = apiRequest.search()
+	if 'results' in jsonResponse:
+		for result in jsonResponse['results']:
+			currentUserId = result['user']['_id']
+			apiRequest.like( currentUserId )
+	else:
+		print 'There are not results'
 
-	with open('search.json') as jsonFile:
-		data = json.load(jsonFile)
-		if 'results' in data:
-			for result in data['results']:
-				currentUserId = result['user']['_id']
-				print '\n'
-				print "Like : " + currentUserId
-				apiCurl.like( currentUserId )
-		else:
-			print 'There are not results'
-
-for x in range (15):
+for x in range (150):
 	likesEveryone()
