@@ -9,5 +9,5 @@ def likesEveryone():
 	else:
 		print 'There are not results'
 
-for x in range (150):
+for x in range (15):
 	likesEveryone()
