@@ -69,6 +69,20 @@ def getLinesAndRemoveFromFile(fileName):
 
 '''
 Obtiene todos los ids a seguir de un usuario
+ACA HACER ESTE REFACTOR
+otherPublic = set()
+otherPublic.add(1)
+otherPublic.add(1)
+otherPublic.add(2)
+
+myPublic = set()
+myPublic.add(1)
+
+newPublic = otherPublic - myPublic
+
+print otherPublic
+print myPublic
+print newPublic
 '''
 def getIdsToFollowFromUser(user):
 	print 'Buscando Followings'

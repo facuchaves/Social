@@ -22,6 +22,9 @@ def getLinesAndRemoveFromFile(fileName):
 	open(fileName, 'w').writelines(lines[cantidadAProcesarPorLlamada : len(lines) ])
 	return lines[0 : cantidadAProcesarPorLlamada]
 
+'''
+Dejar de seguir
+'''
 def dejarDeSeguirNoSeguidores():
 	seguidoresService.actualizarDejarDeSeguir()
 
@@ -30,4 +33,4 @@ def dejarDeSeguirNoSeguidores():
 	for idAUnfollow in lines:
 		time.sleep(5)
 		apiCurl.unfollow( idAUnfollow )
-	
+
