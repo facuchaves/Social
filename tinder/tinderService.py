@@ -2,6 +2,7 @@ import apiRequest
 
 def likesEveryone():	
 	jsonResponse = apiRequest.search()
+	print jsonResponse
 	if 'results' in jsonResponse:
 		for result in jsonResponse['results']:
 			currentUserId = result['user']['_id']
