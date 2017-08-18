@@ -1,5 +1,6 @@
 import requests
 import time
+import datetime
 
 token = '58527bba-4e15-4928-b334-c30613da9f15'
 gralHeader = {
@@ -29,7 +30,7 @@ def like(id):
 	urlLike = 'https://api.gotinder.com/like/' + id + '?locale=en'
 
 	r = requests.get(urlLike, headers=gralHeader)
-	print "Like : " + id
+	print str(datetime.datetime.now()) + " Like : " + id
 	print r.text
 	time.sleep(2)
 

@@ -1,6 +1,7 @@
 import subprocess
 import instagramConf
 import time
+import datetime
 
 secondsSleep = 3
 
@@ -20,12 +21,12 @@ def searchFollowers(id):
 
 def follow(id):
 	print '\n'
-	print 'Following : ' + str(id)
+	print str(datetime.datetime.now()) + ' Following : ' + str(id)
 	Process=subprocess.Popen('./follow.sh %s ' % (str(id),), shell=True)
 	time.sleep(secondsSleep)
 
 def unfollow(id):
 	print '\n'
-	print 'Unfollowing : ' + str(id)
+	print str(datetime.datetime.now()) + ' Unfollowing : ' + str(id)
 	Process=subprocess.Popen('./unfollow.sh %s ' % (str(id),), shell=True)
 	time.sleep(secondsSleep)

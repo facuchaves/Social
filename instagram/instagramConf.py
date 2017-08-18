@@ -1,2 +1,2 @@
 myId = 1457071243
-maxOperationsPerTime = 25
+maxOperationsPerTime = 15
