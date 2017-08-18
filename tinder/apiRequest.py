@@ -1,7 +1,7 @@
 import requests
 import time
 
-token = '797c7572-bec3-41b9-920c-46a89a2b7700'
+token = '58527bba-4e15-4928-b334-c30613da9f15'
 gralHeader = {
 		'Origin' : 'https://www.tinder.com',
 		'Accept-Encoding' : 'gzip, deflate, br',
@@ -19,7 +19,7 @@ def search():
 	urlSearch = 'https://api.gotinder.com/recs/core?locale=en'
 
 	headersSearch = gralHeader
-	headersSearch['If-None-Match'] = 'W/"1958333664"'
+	headersSearch['If-None-Match'] = 'W/"-1052943510"'
 
 	r = requests.get(urlSearch, headers=headersSearch)
 
