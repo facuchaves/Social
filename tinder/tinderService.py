@@ -1,5 +1,7 @@
-import apiRequest
+import requestClient
 import sys
+import datetime
+import time
 
 class Tee(object):
     def __init__(self, *files):
@@ -17,19 +19,27 @@ original = sys.stdout
 sys.stdout = Tee(sys.stdout, f)
 
 def likesEveryone():	
-	jsonResponse = apiRequest.search()
+	jsonResponse = requestClient.search()
 	if 'results' in jsonResponse:
 		for result in jsonResponse['results']:
 			currentUserId = result['user']['_id']
-			apiRequest.like( currentUserId )
-	elif jsonResponse['status'] != 200:
-		print 'Problemas con el token'
+			requestClient.like( currentUserId )
+		return True
+	if 'status' in jsonResponse and jsonResponse['status'] != 200:
+		print str(datetime.datetime.now()) + ' Problemas con el token'
 		print jsonResponse
+		return False
+	
 	else:
-		print 'There are not results'
+		print str(datetime.datetime.now()) + ' No hay resultados'
 		print jsonResponse
+		return False
 
 for x in range (15):
-	likesEveryone()
+	continues = likesEveryone()
+	if ( not continues ):
+		break
+	time.sleep(60)
+print "------------------------------------FIN---------------------------------------------"
 
 f.close()
