@@ -1,3 +1,5 @@
+import seguidoresService
 import seguidoresServiceCurl
 
-seguidoresServiceCurl.followFollowersByUserName()
+#seguidoresServiceCurl.followFollowersByUserName()
+seguidoresService.obtenerSeguidores(388617625,'AgusQuesada')

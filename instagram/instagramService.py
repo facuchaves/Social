@@ -18,18 +18,19 @@ def getFollowings(id):
 	print str(datetime.datetime.now()) + ' Obteniendo los que sigue ' + str(id).rstrip()
 	followingsJson = requestClient.searchFollowings(id)
 	
-	global otherPublic
-	putFollowingsIdsInList(otherPublic,followingsJson)
+	listIds = set()
+	putFollowingsIdsInList(listIds,followingsJson)
 	
 	has_next = followingsJson['data']['user']['edge_follow']['page_info']['has_next_page']
 	after = followingsJson['data']['user']['edge_follow']['page_info']['end_cursor']
 	while ( has_next ):
 		followingsAfterJson = requestClient.searchFollowings(id,after)
-		putFollowingsIdsInList(otherPublic,followingsAfterJson)
+		putFollowingsIdsInList(listIds,followingsAfterJson)
 		has_next = followingsAfterJson['data']['user']['edge_follow']['page_info']['has_next_page']
 		after = followingsAfterJson['data']['user']['edge_follow']['page_info']['end_cursor']
 	
-	print str(datetime.datetime.now()) + ' Sigue ' + str(len(otherPublic))
+	print str(datetime.datetime.now()) + ' Sigue ' + str(len(listIds))
+	return listIds
 
 '''
 Obtiene los seguidos y los pasa de json a ids planos
@@ -38,27 +39,28 @@ def getFollowers(id):
 	print str(datetime.datetime.now()) + ' Obteniendo seguidores de ' + str(id).rstrip()
 	followersJson = requestClient.searchFollowers(id)
 
-	global otherPublic
-	putFollowersIdsInList(otherPublic,followersJson)
+	listIds = set()
+	putFollowersIdsInList(listIds,followersJson)
 	
 	has_next = followersJson['data']['user']['edge_followed_by']['page_info']['has_next_page']
 	after = followersJson['data']['user']['edge_followed_by']['page_info']['end_cursor']
 	while ( has_next ):
 		followersAfterJson = requestClient.searchFollowers(id,after)
-		putFollowersIdsInList(otherPublic,followersAfterJson)
+		putFollowersIdsInList(listIds,followersAfterJson)
 		has_next = followersAfterJson['data']['user']['edge_followed_by']['page_info']['has_next_page']
 		after = followersAfterJson['data']['user']['edge_followed_by']['page_info']['end_cursor']
 
-	print str(datetime.datetime.now()) + ' Lo siguen ' + str(len(otherPublic))
+	print str(datetime.datetime.now()) + ' Lo siguen ' + str(len(listIds))
+	return listIds
 
 '''
 Obtiene los seguidos y los pasa de json a ids planos
 '''
 def getMysFollowings():
 	print str(datetime.datetime.now()) + ' Obteniendo los que sigo'
-	followingsJson = requestClient.searchMysFollowings()
 	global myFollowings
-	putFollowingsIdsInList(myFollowings,followingsJson)
+	myFollowings = getFollowings(instagramConf.myId)
+	#putFollowingsIdsInList(myFollowings,followingsJson)
 	print str(datetime.datetime.now()) + ' Sigo ' + str(len(myFollowings))
 
 '''
@@ -66,9 +68,9 @@ Obtiene los seguidos y los pasa de json a ids planos
 '''
 def getMysFollowers():
 	print str(datetime.datetime.now()) + ' Obteniendo seguidores'
-	followersJson = requestClient.searchMysFollowers()
 	global myFollowers
-	putFollowersIdsInList(myFollowers,followersJson)
+	myFollowers = getFollowers(instagramConf.myId)
+	#putFollowersIdsInList(myFollowers,followersJson)
 	print str(datetime.datetime.now()) + ' Me siguen ' + str(len(myFollowers))
 
 '''
@@ -87,9 +89,9 @@ def putFollowingsIdsInList(list,jsonIds):
 Pone los ids en una lista
 '''
 def putIdsInList(list , jsonIds , edgeType):
-    for node in jsonIds['data']['user'][edgeType]['edges']:
-    	list.add( str(node['node']['id']) )
-
+	if 'data' in jsonIds:
+		for node in jsonIds['data']['user'][edgeType]['edges']:
+			list.add( str(node['node']['id']) )
 '''
 Actualiza los ids de usuarios que sigo y no me siguen.
 '''
@@ -106,12 +108,14 @@ def updateMyData():
 '''
 '''
 def getIdsToFollowFromUser(user):
-	followingsJson = getFollowings(user.idUsuario)
-	#putFollowingsIdsInList(otherPublic,followingsJson)
-	print str(datetime.datetime.now()) + ' Followings de ' + str(user.nombre) + ' -> ' + str(len(otherPublic))
+	global otherPublic 
+	otherFollowings = getFollowings(user.idUsuario)
+	print str(datetime.datetime.now()) + ' Followings de ' + str(user.nombre) + ' -> ' + str(len(otherFollowings))
 
-	followersJson = getFollowers(user.idUsuario)
-	#putFollowersIdsInList(otherPublic,followersJson)
+	otherFollowers = getFollowers(user.idUsuario)
+	print str(datetime.datetime.now()) + ' Followers de ' + str(user.nombre) + ' -> ' + str(len(otherFollowers))
+	
+	otherPublic = otherFollowings + otherFollowers
 	print str(datetime.datetime.now()) + ' Public de ' + str(user.nombre) + ' -> ' + str(len(otherPublic))
 
 	print str(datetime.datetime.now()) + ' Actualizo mi info'

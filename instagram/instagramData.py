@@ -6,3 +6,7 @@ userSolohaga = usuario.Usuario('Solohaga' , 2241665756)
 userEzeGarcia = usuario.Usuario('EzeGarcia' , 4642529677)
 userGonzaMoha = usuario.Usuario('GonzaMoha' , 1075001696)
 userGonzaPuebla = usuario.Usuario('GonzaPuebla' , 2186428613)
+userAgusQuesada = usuario.Usuario('AgusQuesada' , 253661427)
+userMatiFerrario = usuario.Usuario('MatiFerrario' , 817230139)
+userStephiLucero = usuario.Usuario('StephiLucero' , 3897631396)
+
