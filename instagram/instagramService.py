@@ -47,8 +47,9 @@ def getFollowers(id):
 	while ( has_next ):
 		followersAfterJson = requestClient.searchFollowers(id,after)
 		putFollowersIdsInList(listIds,followersAfterJson)
-		has_next = followersAfterJson['data']['user']['edge_followed_by']['page_info']['has_next_page']
-		after = followersAfterJson['data']['user']['edge_followed_by']['page_info']['end_cursor']
+		if 'data' in followersAfterJson:
+			has_next = followersAfterJson['data']['user']['edge_followed_by']['page_info']['has_next_page']
+			after = followersAfterJson['data']['user']['edge_followed_by']['page_info']['end_cursor']
 
 	print str(datetime.datetime.now()) + ' Lo siguen ' + str(len(listIds))
 	return listIds
@@ -115,7 +116,7 @@ def getIdsToFollowFromUser(user):
 	otherFollowers = getFollowers(user.idUsuario)
 	print str(datetime.datetime.now()) + ' Followers de ' + str(user.nombre) + ' -> ' + str(len(otherFollowers))
 	
-	otherPublic = otherFollowings + otherFollowers
+	otherPublic = otherFollowings | otherFollowers
 	print str(datetime.datetime.now()) + ' Public de ' + str(user.nombre) + ' -> ' + str(len(otherPublic))
 
 	print str(datetime.datetime.now()) + ' Actualizo mi info'
@@ -183,3 +184,25 @@ def followFromUser(user):
 			break
 	print str(datetime.datetime.now()) +  "------------------------------------FIN--------------------------------------"
 
+
+'''
+Obtiene usuarios de una lista de urls (lugar/hashtag) en el ultimo mes y los guarda en un archivo
+'''
+def getPublicByUrl(urls):
+	for url in urls:
+		print str(datetime.datetime.now()) + ' Obteniendo personas de la url ' + str(url).rstrip()
+		followingsJson = requestClient.searchFollowings(id)
+		
+		listIds = set()
+		putFollowingsIdsInList(listIds,followingsJson)
+		
+		has_next = followingsJson['data']['user']['edge_follow']['page_info']['has_next_page']
+		after = followingsJson['data']['user']['edge_follow']['page_info']['end_cursor']
+		while ( has_next ):
+			followingsAfterJson = requestClient.searchFollowings(id,after)
+			putFollowingsIdsInList(listIds,followingsAfterJson)
+			has_next = followingsAfterJson['data']['user']['edge_follow']['page_info']['has_next_page']
+			after = followingsAfterJson['data']['user']['edge_follow']['page_info']['end_cursor']
+	
+		print str(datetime.datetime.now()) + ' Sigue ' + str(len(listIds))
+		return listIds

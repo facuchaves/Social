@@ -190,7 +190,7 @@ def actualizarMisSeguidores():
 	print 'Actualizando mis seguidores.'
 	resp, content , aplicationName = twitterApiClient.obtenerSeguidoresByUserId(miId)
 	print 'Cantidad seguidores : ' + str( len(content['ids'] ) )
-	actualizarIdsEnArchivos( content['ids'] , 'Datos/Seguidores_De__FacuChavesOk' )
+	actualizarIdsEnArchivos( content['ids'] , 'Datos/Seguidores_De_FacuChavesOk' )
 
 #Actualiza archivo de ids.
 def actualizarIdsEnArchivos(ids,fileName):
@@ -201,7 +201,8 @@ def actualizarIdsEnArchivos(ids,fileName):
 
 #Obtiene los seguidores del id pasado por parametro y genera un archivo con todos los ids.
 def obtenerSeguidores(id,name):
-	twitterApiClient.obtenerSeguidoresByUserId(id)
+	resp, content , aplicationName = twitterApiClient.obtenerSeguidoresByUserId(id)
+	actualizarIdsEnArchivos( content['ids'] , 'Datos/Seguidores_De_'+str(name) )
 	procesamientoArchivos.disjuncion('Datos/Seguidos_Por_FacuChavesOk','Datos/Seguidores_De_'+str(name),'Datos/Ids_A_Seguir_De_'+str(name))
 
 #Comparar con https://web.crowdfireapp.com/#/163064210-tw/nonFollowers

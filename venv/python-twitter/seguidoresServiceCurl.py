@@ -2,7 +2,7 @@ import apiCurl
 import seguidoresService
 import time
 
-userName= "Patro"
+userName= "Chachi"
 cantidadAProcesarPorLlamada = 80
 
 '''
