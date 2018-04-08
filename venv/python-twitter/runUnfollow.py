@@ -1,3 +1,0 @@
-import seguidoresServiceCurl
-
-seguidoresServiceCurl.dejarDeSeguirNoSeguidores()
