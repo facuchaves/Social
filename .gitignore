@@ -1,1 +1,6 @@
-venv/python-twitter/*.pyc
+instagram/*.pyc
+tinder/*.pyc
+twitter/codigo/*.pyc
+instagram/*.log
+tinder/*.log
+twitter/codigo/*.log
