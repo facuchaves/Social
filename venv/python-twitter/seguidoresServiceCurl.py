@@ -11,7 +11,7 @@ Sigue los seguidores de un usuario
 def followFollowersByUserName():
 	lines = getLinesAndRemoveFromFile('Datos/Ids_A_Seguir_De_' + str(userName) )
 	for idASeguir in lines:
-		time.sleep(5)
+		time.sleep(45)
 		apiCurl.follow( idASeguir )
 
 '''
@@ -31,7 +31,7 @@ def dejarDeSeguirNoSeguidores():
 	lines = getLinesAndRemoveFromFile( "Datos/DejarDeSeguir" )
 
 	for idAUnfollow in lines:
-		time.sleep(5)
+		time.sleep(45)
 		apiCurl.unfollow( idAUnfollow )
 
 
