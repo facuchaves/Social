@@ -9,19 +9,17 @@ secondsSleep = 60
 cantPerRequest = 2000
 
 gralHeader = {
-		'cookie' : 'mid=WVUbwAAEAAGWQ6aSQDF34Qj1WsK_; datr=KUyXWTe2D4sLZeEUl2BqRmAV; ig_or=landscape-primary; sessionid=IGSC67f941351b18d81713be759dbdc1aaec874ff1d4a9e6e11466935a14ce5f4610%3AqyEyPx3ipvuh7pqG0sFZtNCJGAo8LMwc%3A%7B%22_auth_user_id%22%3A1457071243%2C%22_auth_user_backend%22%3A%22accounts.backends.CaseInsensitiveModelBackend%22%2C%22_auth_user_hash%22%3A%22%22%2C%22_token_ver%22%3A2%2C%22_token%22%3A%221457071243%3Ak1LsyysYGUql9M3kh8LyW2NAr2HudvDo%3A16c7cb8020504e34e13237d550bc569d776af55c5d1c1ac88ed61e3777d2f82a%22%2C%22_platform%22%3A4%2C%22last_refreshed%22%3A1522594680.3116137981%2C%22asns%22%3A%7B%22time%22%3A1505737893%2C%22181.30.57.66%22%3A10318%7D%7D; ig_vw=1290; ig_pr=1; ig_vh=634; fbm_124024574287414=base_domain=.instagram.com; fbsr_124024574287414=fGdK_XCcrvGnwIGqO91vVeM8d41-X_JuuTHwfu7j7vo.eyJhbGdvcml0aG0iOiJITUFDLVNIQTI1NiIsImNvZGUiOiJBUURRRmlCMGxGV2h2YXlyb1RudUNjUWNERUtSQndqQS1QLTl2elVsbzRiY0FQNjNRWUxEME0wNmhQNVY2WTFUWDA4YW9mdGJRT1NTSG5PcWRfNmd0V1ltLTZzWVFlZkdPOWRNQkxBcXRZamRjX2tnZlpLNVFpb0FYSlNZYTJIcWdjeTJhUDFPQ3g0bTQ3UUYzUHV1eTRwdXRHWk1CeDNhMUVma0pGVll2YWV0OTNDbVpaVWRGdGtYWHBCZEtNSXViRy1pdGJXdDQxa1FSTjhsU3pmYXpBVnF5dUIzV2o4TGQ4LWkwUXc2TlNCakZjdGxIaElVaTA1RHJ2T3daRndnVEY3VnUwWlZjajIxS0I3SzQwT0U5dWVhbXR0QVpGVlFQeXNSbXlUTV9OM2xXTVNyRVpUd0dGQldHLVZubDNzcUdSRnQ4YUxyRFJBT1FfVHA4Y0FzMnh4bSIsImlzc3VlZF9hdCI6MTUyMjU5NDY4MywidXNlcl9pZCI6Ijc3NTM3MzkyMyJ9; csrftoken=j4LxhOoeosYnVA41hrVyQQhSAJD1cMEN; rur=PRN; ds_user_id=1457071243; urlgen="{\"time\": 1522594679}:1f2eQo:kaq2V9me9upBgG8M17RWXav-oFg"' ,
+		'cookie' : 'ig_did=7C35A40E-93FF-48FF-94D7-8E749DC9CDE1; mid=XkbqagAEAAGw-1KSKHb88SJ4rYMf; rur=FRC; fbm_124024574287414=base_domain=.instagram.com; fbsr_124024574287414=MdIyNjZ6JPphIoKb3puhOYS5bjI4AyhE2fJCGeVBN_Y.eyJ1c2VyX2lkIjoiNzc1MzczOTIzIiwiY29kZSI6IkFRRGx2SXdteEFkY0QzZXdPR2JoLV84UFhVaC10ZWF0Zk42VURubVRiemRnVlVFRXllWF9wNTl6WGJzUXJRdFl0LXdMY1VwaFdiWThMRUNHTjg4NmtBSE5nQjlzd0JremhfS2ZIZUt3NVN6TEc5Z1lscVpSTk1aZFhrMmM4ZGxwRFlwQ2dCcjRHS1Y1VEhlOHNjcUZJT0lIcXZmY3Z3TXZ0YmpRRnh6SHZvZWs2ckJYcGczNi1uYkZ0Zkpsa3N2cV8tdTRwOGxkS2JCUG9MMzZ6eEpaTmd3TUg3aVNNSHpxNGo2a1NGVUtHWkswQ2dJVllZY3lJb0xvWnlaMXVBWEhEank1d19TZmE1RFdOaldtS3lDanRvUkdGcllTZlpaWW04dmRIcTk5b2lWM05lamNnU2R2SGlhZy1ncFJ1QVJLM2lnIiwib2F1dGhfdG9rZW4iOiJFQUFCd3pMaXhuallCQUdTYWNwQ2FzZDRRdFlTVUdQellNMkNpTkF1SkR3S1d2TklWd3BXRTNldVQ1aDZUeVRGaDN3eGJDbm52eXl0c0Y1RVBWYW92YXZ6S3NBdTdaQWxzQzdlelJvczVXeGxGOVpBZnZqN0c5dEo5R1JieVdTMGpXQ2J3ckoyQ1pBNnRITW9mdXZQSFA3cW1nTEk1QVpCWkJmNUNFSnMyZGJ3WkRaRCIsImFsZ29yaXRobSI6IkhNQUMtU0hBMjU2IiwiaXNzdWVkX2F0IjoxNTg3MTg1NzE3fQ; csrftoken=yXvHynNT7QMwhsC0bt91Pl8OL2LaP3Ws; shbid=3839; shbts=1587185718.1354828; ds_user_id=1457071243; sessionid=1457071243%3Aj0HAxx1ITYOSKj%3A28; urlgen="{\"190.191.58.64\": 10481}:1jPfYc:REaFZDYITuv89Qbaf3Gz0eFkpKM"' ,
+		'referer' : 'https://www.instagram.com' ,
 		'origin' : 'https://www.instagram.com' ,
+		'x-ig-app-id' : '936619743392459',
+		'x-ig-www-claim' : 'hmac.AR2oSceKizKpu1ILfaMs4tK1SOXEokaxIbwtJQEOyuFxSbEa',
 		'accept-encoding' : 'gzip, deflate, br' ,
 		'accept-language' : 'en-US,en;q=0.8' ,
 		'user-agent' : 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3071.115 Safari/537.36' ,
-		'x-requested-with' : 'XMLHttpRequest' ,
-		'x-csrftoken' : 'j4LxhOoeosYnVA41hrVyQQhSAJD1cMEN' ,
-		'x-instagram-ajax' : '1' ,
-		'content-type' : 'application/x-www-form-urlencoded' ,
 		'accept' : '*/*' ,
-		'referer' : 'https://www.instagram.com/ana_kari_86/followers/?hl=en' ,
 		'authority' : 'www.instagram.com' ,
-		'content-length' : '0'
+		'x-requested-with' : 'XMLHttpRequest'
 	}
 
 gralCookies = requests.cookies.RequestsCookieJar()
