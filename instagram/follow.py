@@ -7,10 +7,11 @@ f = open('instagram.log', 'a')
 original = sys.stdout
 sys.stdout = logs.Tee(sys.stdout, f)
 
-currentUser = instagramData.userMatiFerrario
+#currentUser = instagramData.userMatiFerrario
 #currentUser = instagramData.userStephiLucero
+currentUser = instagramData.userVitabellashoes
 
-#instagramService.getIdsToFollowFromUser(currentUser)
-instagramService.followFromUser(currentUser)
+instagramService.getIdsToFollowFromUser(currentUser)
+#instagramService.followFromUser(currentUser)
 
 f.close()

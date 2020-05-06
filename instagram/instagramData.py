@@ -10,3 +10,5 @@ userAgusQuesada = usuario.Usuario('AgusQuesada' , 253661427)
 userMatiFerrario = usuario.Usuario('MatiFerrario' , 817230139)
 userStephiLucero = usuario.Usuario('StephiLucero' , 3897631396)
 
+#UsuariosDeEze
+userVitabellashoes = usuario.Usuario('Vitabellashoes' , 4141918268)
