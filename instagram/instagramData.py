@@ -12,3 +12,4 @@ userStephiLucero = usuario.Usuario('StephiLucero' , 3897631396)
 
 #UsuariosDeEze
 userVitabellashoes = usuario.Usuario('Vitabellashoes' , 4141918268)
+userOlivashoes = usuario.Usuario('olivashoes' , 259194877)
